@@ -75,6 +75,12 @@ return [
             'driver' => 'session',
             'provider' => 'clients',
         ],
+
+        // **CRITICAL:** Ensure the name is 'clients' and the model is correct
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Client::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClientAuth\ClientLoginController;
 use App\Http\Controllers\ClientAuth\ClientRegisterController;
+use App\Http\Controllers\ClientDashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,9 +27,9 @@ Route::prefix('client')->name('client.')->group(function () {
 
 // routes/web.php
 
-// Route::middleware(['auth:client'])->prefix('client')->name('client.')->group(function () {
-//     // This route is only accessible if the client is logged in via the 'client' guard
-//     Route::get('/dashboard', [ClientDashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth:client'])->prefix('client')->name('client.')->group(function () {
+    // This route is only accessible if the client is logged in via the 'client' guard
+    Route::get('/dashboard', [ClientDashboardController::class, 'index'])->name('dashboard');
 
-//     // Add your other protected routes here (Page editor, analytics reports, etc.) [cite: 52, 54]
-// });
+    // Add your other protected routes here (Page editor, analytics reports, etc.) [cite: 52, 54]
+});
